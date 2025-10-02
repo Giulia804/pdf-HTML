@@ -1,0 +1,197 @@
+<!DOCTYPE html> <!-- Define que o documento é do tipo HTML5 -->
+<html lang="pt-BR"> <!-- Define a linguagem principal da página (português do Brasil) -->
+<head>
+  <meta charset="UTF-8"> <!-- Define o padrão de caracteres para suportar acentos -->
+  <title>Cine Flix</title> <!-- Título que aparece na aba do navegador -->
+  <!-- Importa os ícones da biblioteca Font Awesome -->
+  <script src="https://kit.fontawesome.com/cd9e447ed7.js" crossorigin="anonymous"></script>
+  
+  <style>
+    /* RESET BÁSICO: remove margens/paddings padrões e aplica fonte */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+
+    /* CORPO da página */
+    body { 
+      background-color: #111; /* Fundo preto */
+      color: #fff;            /* Texto branco */
+      display: flex;          /* Usa flexbox */
+      flex-direction: column; /* Elementos ficam em coluna */
+      min-height: 100vh;      /* Ocupa no mínimo 100% da altura da tela */
+    }
+
+    /* CABEÇALHO */
+    header { 
+      background: #222; /* Cor de fundo cinza escuro */
+      padding: 15px 30px; /* Espaçamento interno */
+      display: flex; /* Flexbox para alinhar itens */
+      justify-content: space-between; /* Espaço entre logo e menu */
+      align-items: center; /* Alinha verticalmente */
+    }
+    header h1 { font-size: 24px; color: #f5c518; } /* Estilo do título */
+    nav a { 
+      color: #fff; 
+      text-decoration: none; /* Remove sublinhado dos links */
+      margin-left: 15px; 
+      font-size: 16px; 
+    }
+    nav a:hover { color: #f5c518; } /* Ao passar o mouse, o link fica amarelo */
+
+    /* LISTA DE FILMES */
+    main.container { 
+      display: flex; 
+      flex-wrap: wrap; /* Quebra de linha automática */
+      justify-content: center; /* Centraliza filmes */
+      padding: 20px;
+      flex: 1; /* Faz o main crescer para ocupar espaço */
+    }
+    .filme { 
+      background: #222; 
+      border-radius: 8px; /* Cantos arredondados */
+      margin: 10px; 
+      padding: 10px; 
+      text-align: center; 
+      width: 200px; /* Largura fixa de cada card */
+      transition: transform 0.3s; /* Animação suave no hover */
+    }
+    .filme:hover { transform: scale(1.05); } /* Aumenta um pouco no hover */
+    .filme img { width: 100%; border-radius: 5px; } /* Imagem ocupa todo o espaço */
+    .filme p { margin-top: 8px; font-size: 14px; color: #f5c518; } /* Nome do filme */
+
+    /* DETALHES (seções escondidas que aparecem ao clicar) */
+    .detalhes { display: none; padding: 20px; background: #111; }
+    .detalhes:target { display: block; } /* Quando acessa via âncora (#id), exibe */
+    .detalhes h2 { color: #f5c518; margin-bottom: 15px; }
+    .info { margin: 8px 0; font-size: 16px; } /* Cada linha de informação */
+    i { color: #f5c518; margin-right: 6px; } /* Ícones amarelos */
+    .voltar { display: inline-block; margin-top: 20px; color: #f5c518; text-decoration: none; }
+
+    /* BOTÃO DE COMPRA */
+    .comprar {
+      display: inline-block;
+      margin-left: 10px;
+      padding: 5px 10px;
+      background: #f5c518; /* Fundo amarelo */
+      color: #111; /* Texto preto */
+      border-radius: 5px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+    .comprar:hover { background: #e0b000; } /* Efeito hover */
+
+    /* RODAPÉ */
+    footer { background: #222; padding: 20px; text-align: center; }
+    footer .container { 
+      display: flex; 
+      justify-content: center; 
+      flex-wrap: wrap; 
+      margin-top: 10px; 
+      gap: 20px; /* Espaço entre itens */
+    }
+    footer section { margin: 5px 0; }
+    footer i { margin-right: 5px; color: #f5c518; } /* Ícones amarelos */
+  </style>
+</head>
+<body>
+  <!-- CABEÇALHO -->
+  <header>
+    <h1><i class="fa fa-film"></i> Cine Flix</h1> <!-- Logo com ícone de filme -->
+    <nav>
+      <!-- Links de navegação (âncoras internas) -->
+      <a href="#filmes"><i class="fa fa-home"></i> Início</a>
+      <a href="#ingressos"><i class="fa fa-ticket-alt"></i> Ingressos</a>
+      <a href="#sessoes"><i class="fa fa-clock"></i> Sessões</a>
+    </nav>
+  </header>
+
+  <!-- LISTA DE FILMES (cards clicáveis) -->
+  <main class="container" id="filmes">
+    <div class="filme">
+      <!-- Link para a seção de detalhes (#filme1) -->
+      <a href="#filme1">
+        <img src="invocação.jpg" alt="Invocação do Mal 4"> <!-- Poster do filme -->
+        <p><i class="fa fa-film"></i> Invocação do Mal 4</p>
+      </a>
+    </div>
+    <div class="filme">
+      <a href="#filme2">
+        <img src="demon-slayer-kimetsu-no-yaiba-infinity-castle.jpg" alt="Demon Slayer">
+        <p><i class="fa fa-film"></i> Demon Slayer</p>
+      </a>
+    </div>
+    <div class="filme">
+      <a href="#filme3">
+        <img src="sexta feira.webp" alt="Uma Sexta-Feira Mais Louca Ainda">
+        <p><i class="fa fa-film"></i> Uma Sexta-Feira Mais Louca Ainda</p>
+      </a>
+    </div>
+  </main>
+
+  <!-- ABA DE INGRESSOS -->
+  <section id="ingressos" class="detalhes">
+    <h2><i class="fa fa-ticket-alt"></i> Ingressos</h2>
+    <div class="info"><i class="fa fa-money-bill-wave"></i> Valor único: R$ 25,00</div>
+    <a class="voltar" href="#filmes"><i class="fa fa-arrow-left"></i> Voltar</a>
+  </section>
+
+  <!-- ABA DE SESSÕES -->
+  <section id="sessoes" class="detalhes">
+    <h2><i class="fa fa-clock"></i> Sessões</h2>
+    <!-- Lista de horários das sessões -->
+    <div class="info"><i class="fa fa-film"></i> Invocação do Mal 4 → 14h, 16h15m, 20h30m (Salas 2, 4, 8 - 2D)</div>
+    <div class="info"><i class="fa fa-film"></i> Demon Slayer → 15h20m, 16h30m, 20h35m (Salas 1, 3, 5 - 3D)</div>
+    <div class="info"><i class="fa fa-film"></i> Uma Sexta-Feira Mais Louca Ainda → 13h45m (Sala 9 - 2D)</div>
+    <a class="voltar" href="#filmes"><i class="fa fa-arrow-left"></i> Voltar</a>
+  </section>
+
+  <!-- DETALHES DO FILME 1 -->
+  <section id="filme1" class="detalhes">
+    <h2><i class="fa fa-film"></i> Invocação do Mal 4: O Último Ritual</h2>
+    <div class="info"><i class="fa fa-clock"></i> Duração: 2h15m</div>
+    <div class="info"><i class="fa fa-calendar-alt"></i> Sessões:</div>
+    <!-- Sessões com botão de compra -->
+    <div class="info">14h - Sala 2 (2D) <a class="comprar" href="#ingressos"><i class="fa fa-ticket-alt"></i> Comprar</a></div>
+    <div class="info">16h15m - Sala 4 (2D) <a class="comprar" href="#ingressos"><i class="fa fa-ticket-alt"></i> Comprar</a></div>
+    <div class="info">20h30m - Sala 8 (2D) <a class="comprar" href="#ingressos"><i class="fa fa-ticket-alt"></i> Comprar</a></div>
+    <div class="info"><i class="fa fa-money-bill-wave"></i> Ingresso: R$ 25,00</div>
+    <a class="voltar" href="#filmes"><i class="fa fa-arrow-left"></i> Voltar</a>
+  </section>
+
+  <!-- DETALHES DO FILME 2 -->
+  <section id="filme2" class="detalhes">
+    <h2><i class="fa fa-dragon"></i> Demon Slayer: Kimetsu no Yaiba - Castelo Infinito</h2>
+    <div class="info"><i class="fa fa-clock"></i> Duração: 2h35m</div>
+    <div class="info"><i class="fa fa-calendar-alt"></i> Sessões:</div>
+    <div class="info">15h20m - Sala 1 (3D) <a class="comprar" href="#ingressos"><i class="fa fa-ticket-alt"></i> Comprar</a></div>
+    <div class="info">16h30m - Sala 3 (3D) <a class="comprar" href="#ingressos"><i class="fa fa-ticket-alt"></i> Comprar</a></div>
+    <div class="info">20h35m - Sala 5 (3D) <a class="comprar" href="#ingressos"><i class="fa fa-ticket-alt"></i> Comprar</a></div>
+    <div class="info"><i class="fa fa-money-bill-wave"></i> Ingresso: R$ 25,00</div>
+    <a class="voltar" href="#filmes"><i class="fa fa-arrow-left"></i> Voltar</a>
+  </section>
+
+  <!-- DETALHES DO FILME 3 -->
+  <section id="filme3" class="detalhes">
+    <h2><i class="fa fa-theater-masks"></i> Uma Sexta-Feira Mais Louca Ainda</h2>
+    <div class="info"><i class="fa fa-clock"></i> Duração: 1h51m</div>
+    <div class="info"><i class="fa fa-calendar-alt"></i> Sessões:</div>
+    <div class="info">13h45m - Sala 9 (2D) <a class="comprar" href="#ingressos"><i class="fa fa-ticket-alt"></i> Comprar</a></div>
+    <div class="info"><i class="fa fa-money-bill-wave"></i> Ingresso: R$ 25,00</div>
+    <a class="voltar" href="#filmes"><i class="fa fa-arrow-left"></i> Voltar</a>
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <section class="nome"><i class="fa fa-film"></i> Cine Flix</section>
+    <section class="endereco">
+      Avenida Afonso Pena, n. 1.800, Centro, Belo Horizonte, MG, Brasil, CEP: 31.435-700
+    </section>
+    <div class="container">
+      <section class="telefone"><i class="fa fa-phone"></i> +55 31 3798 4498</section>
+      <section class="whatsapp"><i class="fa fa-whatsapp"></i> +55 31 9 9985 6487</section>
+      <section class="facebook">
+        <a href="http://www.facebook.com.br" target="_blank"><i class="fa fa-facebook-official"></i> Facebook</a>
+      </section>
+    </div>
+  </footer>
+</body>
+</html>
